@@ -21,8 +21,26 @@ namespace EasyCashIdentityProject.PresentationLayer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(AppUserRegisterDto appUserRegisterDto)
+        public async Task<IActionResult> IndexAsync(AppUserRegisterDto appUserRegisterDto)
         {
+            if (ModelState.IsValid)
+            {
+                AppUser appUser = new AppUser()
+                {
+                    UserName = appUserRegisterDto.Username,
+                    Name = appUserRegisterDto.Name,
+                    Surname = appUserRegisterDto.Surname,
+                    Email = appUserRegisterDto.Email
+                };
+
+                var result = await _userManager.CreateAsync(appUser, appUserRegisterDto.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "ConfirmMail");
+                }
+
+            }
+
             return View();
         }
     }
