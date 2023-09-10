@@ -23,7 +23,7 @@ namespace EasyCashIdentityProject.PresentationLayer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IndexAsync(AppUserRegisterDto appUserRegisterDto)
+        public async Task<IActionResult> Index(AppUserRegisterDto appUserRegisterDto)
         {
             if (ModelState.IsValid)
             {
