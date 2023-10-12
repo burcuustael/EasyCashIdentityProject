@@ -18,6 +18,10 @@ namespace EasyCashIdentityProject.PresentationLayer.Controllers
             return View();
         }
 
+        public IActionResult ImageSave()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
